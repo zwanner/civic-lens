@@ -33,7 +33,7 @@
       <p class="tagline">See Clearly. Know Deeply. Act Justly.</p>
 
       <nav class="mobile-nav" aria-label="Mobile Navigation">
-        <input type="checkbox" id="menu-toggle" hidden>
+        <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="menu-button">Menu</label>
         <ul class="menu">
           <li><a href="#breaking-news">Breaking News</a></li>
@@ -50,7 +50,7 @@
       <h2 id="welcome-heading">Welcome to Civic Lens</h2>
       <p>We are an independent news organization dedicated to unbiased reporting, investigative journalism, and truth-driven storytelling. At Civic Lens, our mission is to expose the facts, amplify marginalized voices, and shine light on the systems that shape our society.</p>
       <blockquote class="tagline">
-        <p>&ldquo;We don't follow the narrative. We follow the facts.&rdquo;</p>
+        <p>"We don't follow the narrative. We follow the facts."</p>
       </blockquote>
     </section>
 
@@ -142,16 +142,15 @@
       <h2 id="alerts-heading">Stay Informed. Stay Empowered.</h2>
       <p>Receive text messages with the news you want to know.</p>
 
-      <!-- ADD form accessibility: action, method, labels, types -->
-      <form class="alerts-form">
+      <form class="alerts-form" method="post" action="https://wp.zybooks.com/form-viewer.php">
         <p>
           <label for="name">Name</label>
-          <input id="name" name="name" type="text">
+          <input id="name" name="name" type="text" autocomplete="name" required>
         </p>
 
         <p>
           <label for="mobile">Mobile</label>
-          <input id="mobile" name="mobile" type="tel">
+          <input id="mobile" name="mobile" type="tel" autocomplete="tel" required>
         </p>
 
         <fieldset>

@@ -1,10 +1,57 @@
-/* CSS by ///ADD/// YOUR NAME */
+/* CSS by ///ADD/// Owen van der Zwan */
 
 /* Imported Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-/* ///ADD/// CSS Reset */
+/* CSS Reset by Eric Meyer 2011 */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
 /* Root Variables */
 :root {
@@ -19,7 +66,6 @@
   --transition: all 0.5s ease;
 }
 
-/* Manual Light/Dark Mode Styles*/
 body.light-mode {
   background-color: var(--watchdog-white);
   color: var(--truth-text);
@@ -56,26 +102,507 @@ body.dark-mode {
   top: 0;
 }
 
-/* ///ADD/// Navigation Styles */
+/* Navigation Styles - Mobile First */
+.mobile-nav {
+  margin-top: 1rem;
+  padding-bottom: 1.5rem;
+  font-family: var(--font-body);
+}
 
-/* ///ADD/// Global Layout Styles */
+/* Toggle checkbox: hidden from view, still reachable by keyboard */
+#menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
-/* ///ADD/// Global Text Styles */
+.menu-button {
+  display: block;
+  padding: 0.625rem 1rem;
+  background-color: var(--news-flash);
+  color: var(--watchdog-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.menu-button::before {
+  content: "\2630"; /* hamburger icon */
+  margin-right: 0.5rem;
+}
 
 
-/* ///ADD/// medium styles 620px */
+#menu-toggle:focus-visible + .menu-button {
+  outline: 3px solid var(--news-flash);
+  outline-offset: -3px;
+}
+
+/* Closed by default on mobile */
+.menu {
+  display: none;
+}
+
+#menu-toggle:checked ~ .menu {
+  display: block;
+}
+
+.menu a {
+  display: block;
+  margin-top: 1px;
+  padding: 0.625rem 1rem;
+  background-color: var(--news-flash);
+  color: var(--watchdog-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus {
+  background-color: var(--story-subtitle);
+}
+
+/* Global Layout Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--watchdog-white);
+  color: var(--truth-text);
+}
+
+.site-header {
+  position: relative;
+  padding: 1.5rem 1rem 0;
+  background-color: var(--blue-bulletin);
+  color: var(--watchdog-white);
+}
+
+main {
+  padding: 1.5rem 1rem;
+}
+
+main section {
+  margin-bottom: 2.5rem;
+}
+
+/* Breaking News cards */
+#breaking-news article {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--news-flash);
+  color: var(--watchdog-white);
+  box-shadow: var(--shadow);
+}
+
+#breaking-news video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+/* Featured Articles cards */
+#featured-articles article {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--story-subtitle);
+  box-shadow: var(--shadow);
+}
+
+/* Alerts form */
+.alerts-form {
+  padding: 1.5rem 1rem;
+  background-color: var(--news-flash);
+  color: var(--watchdog-white);
+  box-shadow: var(--shadow);
+}
+
+.alerts-form p {
+  margin-bottom: 1rem;
+}
+
+.alerts-form input[type="text"],
+.alerts-form input[type="tel"] {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  background-color: var(--watchdog-white);
+  color: var(--truth-text);
+}
+
+.alerts-form fieldset {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--watchdog-white);
+}
+
+.alerts-form fieldset p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.alerts-form input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.alerts-form button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--blue-bulletin);
+  color: var(--watchdog-white);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1rem;
+  background-color: var(--blue-bulletin);
+  color: var(--watchdog-white);
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--news-flash);
+  color: var(--watchdog-white);
+  text-decoration: none;
+}
+
+footer > p {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Global Text Styles */
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+blockquote {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+.site-header .tagline {
+  margin-top: 0.25rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+#featured-articles h3 {
+  border-bottom-color: var(--story-subtitle);
+}
+
+article p {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+#welcome blockquote {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Form text */
+.alerts-form,
+.alerts-form input,
+.alerts-form button {
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.alerts-form legend,
+.social-links a,
+.alerts-form button {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.alerts-form label {
+  font-size: 0.875rem;
+}
+
+footer h2 {
+  font-size: 1.5rem;
+}
+
+footer > p {
+  font-size: 0.875rem;
+}
 
 
-/* ///ADD/// large styles 920px */
+/* medium styles 620px */
+@media screen and (min-width: 620px) {
+
+  .menu-button {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .menu a {
+    margin-top: 0;
+    padding: 0.5rem 0.875rem;
+  }
+
+  /* Roomier gutters */
+  .site-header {
+    padding: 2rem 2rem 0;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  footer {
+    padding: 2.5rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  /* Two-column card grids */
+  #breaking-news,
+  #featured-articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  #breaking-news h2,
+  #featured-articles h2 {
+    grid-column: 1 / -1;
+  }
+
+  #breaking-news article,
+  #featured-articles article {
+    margin-bottom: 0;
+  }
+
+  /* Name and Mobile side by side */
+  .alerts-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .alerts-form fieldset,
+  .alerts-form > p:last-of-type {
+    grid-column: 1 / -1;
+  }
+
+  /* Two-column checkboxes, filling across rows */
+  .alerts-form fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+
+  .alerts-form legend {
+    grid-column: 1 / -1;
+  }
+
+}
 
 
-/* ///ADD/// x-large styles 1024px */
+/* large styles 920px */
+@media screen and (min-width: 920px) {
+
+  .site-header {
+    padding: 2.5rem 3rem 0;
+  }
+
+  main {
+    padding: 2.5rem 3rem;
+  }
+
+  footer {
+    padding: 3rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  /* Featured Articles moves to three across */
+  #featured-articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Checkboxes move to three across */
+  .alerts-form fieldset {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .alerts-form {
+    padding: 2rem;
+  }
+
+}
 
 
-/* ///ADD/// Interaction Queries for color scheme light and dark and motion preference */
+/* x-large styles 1024px */
+@media screen and (min-width: 1024px) {
+
+  /* Center the content column */
+  .site-header > *,
+  footer > * {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  main {
+    max-width: calc(1024px + 6rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .site-header {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  footer {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+}
 
 
-/* ///ADD///  Feature Query for :has() that checks if the #menu-toggle is checked */
+/* Interaction Queries */
+
+/* Light mode - system preference */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--watchdog-white);
+    color: var(--truth-text);
+  }
+
+  #featured-articles article {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Dark mode - system preference */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--truth-text);
+    color: var(--watchdog-white);
+  }
+
+  #featured-articles article {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Manual toggle overrides the system preference, so the card colors
+   have to follow the body class as well as the media query */
+body.light-mode #featured-articles article {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode #featured-articles article {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Feature Query for :has() that checks if the #menu-toggle is checked */
 @supports (selector(:has(*))) {
+
+  .mobile-nav:has(#menu-toggle:checked) .menu-button {
+    background-color: var(--blue-bulletin);
+  }
+
+  /* Swap the hamburger for a close icon while the menu is open */
+  .mobile-nav:has(#menu-toggle:checked) .menu-button::before {
+    content: "\2715";
+  }
+
+  /* Lift the open menu off the header */
+  .mobile-nav:has(#menu-toggle:checked) .menu {
+    box-shadow: var(--shadow);
+  }
 
 }
