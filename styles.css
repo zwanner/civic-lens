@@ -38,7 +38,23 @@ body.dark-mode {
   cursor: pointer;
 }
 
-/* ///ADD/// Skip Link Styles */
+/* Skip Link Styles */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background-color: var(--blue-bulletin);
+  color: var(--watchdog-white);
+  font-family: var(--font-body);
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  transition: var(--transition);
+}
+.skip-link:focus {
+  top: 0;
+}
 
 /* ///ADD/// Navigation Styles */
 
